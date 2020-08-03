@@ -1,0 +1,27 @@
+# action.yml
+name: 'Oracle Functions'
+description: 'Create Oracle Functions'
+inputs:
+  user:  # id of input
+    description: 'Enter user ocid'
+    required: true
+  fingerprint:
+    description: 'Enter fingerprint'
+    required: true
+  region:
+    description: 'Enter the region'
+    required: true
+  tenancy:
+    description: 'Enter tenancy ocid'
+    required: true
+  key-file:
+    description: 'Enter PEM key'
+    required: true
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.user }}
