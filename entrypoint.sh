@@ -12,10 +12,10 @@ yum install -y python36
 curl -L -O https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
 chmod +x install.sh
 ./install.sh --accept-all-defaults
-oci setup repair-file-permissions --file /home/runner/.oci/config
-oci setup repair-file-permissions --file /home/runner/.oci/key.pem
 echo "::add-path::/home/runner/bin"
 exec -l $SHELL
+oci setup repair-file-permissions --file /home/runner/.oci/config
+oci setup repair-file-permissions --file /home/runner/.oci/key.pem
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 python -m pip install --upgrade pip
 if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
