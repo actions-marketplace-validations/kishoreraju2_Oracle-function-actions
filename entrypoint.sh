@@ -8,7 +8,6 @@ echo "region=$3" >> ~/.oci/config
 echo "tenancy=$4" >> ~/.oci/config
 echo "key_file=~/.oci/key.pem" >> ~/.oci/config
 echo "$5" >> ~/.oci/key.pem
-yum install -y python36
 curl -L -O https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
 chmod +x install.sh
 ./install.sh --accept-all-defaults
