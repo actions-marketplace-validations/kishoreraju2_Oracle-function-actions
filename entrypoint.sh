@@ -8,7 +8,7 @@ echo "region=$3" >> ~/.oci/config
 echo "tenancy=$4" >> ~/.oci/config
 echo "key_file=~/.oci/key.pem" >> ~/.oci/config
 echo "$5" >> ~/.oci/key.pem
-ls ~/.oci
+cat ~/.oci/config
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
 
 echo "::set-output name=message::Successfully created OCI environment"
