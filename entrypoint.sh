@@ -12,7 +12,7 @@ yum install -y python36
 curl -L -O https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
 chmod +x install.sh
 ./install.sh --accept-all-defaults
-echo "::add-path::/home/runner/bin"
+echo "::add-path::/github/home/bin/oci"
 exec -l $SHELL
 oci setup repair-file-permissions --file /home/runner/.oci/config
 oci setup repair-file-permissions --file /home/runner/.oci/key.pem
