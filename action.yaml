@@ -18,10 +18,14 @@ inputs:
     description: 'Enter PEM key'
     required: true
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  message: # id of output
+    description: 'Status'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.user }}
+    - ${{ inputs.fingerprint }}
+    - ${{ inputs.region }}
+    - ${{ inputs.tenancy }}
+    - ${{ inputs.key-file }}

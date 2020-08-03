@@ -19,7 +19,11 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: hello
         with:
-          user: 'Kishore Kumar'
+          user: '${{secrets.OCI_USER_OCID}}'
+          fingerprint: '${{secrets.OCI_FINGERPRINT}}'
+          region: '${{secrets.OCI_REGION}}'
+          tenancy: '${{secrets.OCI_TENANCY_OCID}}'
+          key-file: '${{secrets.OCI_KEY_FILE}}'
       # Use the output from the `hello` step
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "The time was ${{ steps.hello.outputs.message }}"
