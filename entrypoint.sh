@@ -10,5 +10,6 @@ echo "key_file=~/.oci/key.pem" >> ~/.oci/config
 echo "$5" >> ~/.oci/key.pem
 cat ~/.oci/config
 curl -LSs https://raw.githubusercontent.com/fnproject/cli/master/install | sh
+echo "::set-env name=fnLocation::/usr/local/bin/fn"
 echo "::add-path::/usr/local/bin/fn"
 echo "::set-output name=message::Successfully created OCI environment"
