@@ -30,6 +30,23 @@ jobs:
           region: '${{secrets.OCI_REGION}}'
           tenancy: '${{secrets.OCI_TENANCY_OCID}}'
           key-file: '${{secrets.OCI_KEY_FILE}}'
+
+      - name: Configure OCIR Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: 'iad.ocir.io' # default: index.docker.io
+          username: ${{secrets.OCIR_USERNAME}}
+          password: ${{secrets.OCI_AUTH_TOKEN}}
+          
+  
+      # Runs a set of commands using the runners shell       
+      - name: Deploy fn
+        shell: bash
+        run: |
+          fn create context cloudnative --api-url https://functions.us-ashburn-1.oraclecloud.com --registry iad.ocir.io/orasenatdhubsred01/kishore --provider oracle
+          fn use context cloudnative
+          fn update context oracle.compartment-id ${{secrets.COMPARTMENT_OCID}}
+          fn -v deploy --app hello-world-app --no-bump
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.message }}"
